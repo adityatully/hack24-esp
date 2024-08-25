@@ -1,4 +1,4 @@
-# Contributing to papi-mc
+# Contributing
 
 Standard stuff
 

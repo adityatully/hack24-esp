@@ -41,7 +41,7 @@ int adc_raw[NUM_OF_SENSORS] = {-1};
 /*---------------------------------------------------------------
         ADC Vars
 ---------------------------------------------------------------*/
-adc_oneshot_unit_handle_t papi_adc_handle;
+adc_oneshot_unit_handle_t HACK24_adc_handle;
 
 #define ESP_WIFI_SSID CONFIG_ESP_WIFI_SSID
 #define ESP_WIFI_PASS CONFIG_ESP_WIFI_PASSWORD
@@ -84,7 +84,7 @@ static EventGroupHandle_t s_wifi_event_group;
 #define WIFI_CONNECTED_BIT BIT0
 #define WIFI_FAIL_BIT BIT1
 
-static const char *TAG = "PAPI";
+static const char *TAG = "HACK24";
 
 static int s_retry_num = 0;
 
@@ -246,7 +246,7 @@ int normalise(int val, int min, int max, int a, int b)
 
 int get_moisture_percentage()
 {
-    ESP_ERROR_CHECK(adc_oneshot_read(papi_adc_handle, SENS_01, &adc_raw[0]));
+    ESP_ERROR_CHECK(adc_oneshot_read(HACK24_adc_handle, SENS_01, &adc_raw[0]));
 
     return (100 - normalise(adc_raw[0], SENSOR_MIN, SENSOR_MAX, 0, 100));
 }
@@ -479,7 +479,7 @@ void app_main()
     wifi_init_sta();
 
     // ADC Stuff
-    papi_adc_handle = adc_init(ADC_UNIT, SENS_01, ADC_ATTEN);
+    HACK24_adc_handle = adc_init(ADC_UNIT, SENS_01, ADC_ATTEN);
 
     // motor stuff
     gpio_reset_pin(MOTOR);

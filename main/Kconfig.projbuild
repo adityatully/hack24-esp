@@ -1,4 +1,4 @@
-menu "PAPI"
+menu "HACK24"
 
     menu "Wi-Fi AP Configuration"
 
@@ -6,13 +6,13 @@ menu "PAPI"
         string "Wi-Fi SSID"
         default "myssid"
         help
-            SSID (network name) for PAPI to connect to.
+            SSID (network name) for HACK to connect to.
 
     config ESP_WIFI_PASSWORD
         string "Wi-Fi Password"
         default "mypassword"
         help
-            WiFi password (WPA or WPA2) for PAPI to use.
+            WiFi password (WPA or WPA2) for HACK24 to use.
 
     choice ESP_WIFI_SAE_MODE
         prompt "WPA3 SAE mode selection"
